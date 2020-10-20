@@ -119,9 +119,14 @@ Via HTTP
 $ git clone http://domain.com/user/repo.git
 ```
 
-##### Create a new local repository:
+##### Create a new local repository in the current directory:
 ```
 $ git init
+```
+
+##### Create a new local repository in a specific directory:
+```
+$ git init <directory>
 ```
 
 <hr>
@@ -136,6 +141,11 @@ $ git status
 ##### Changes to tracked files:
 ```
 $ git diff
+```
+
+##### See changes/difference of a specific file:
+```
+$ git diff <file>
 ```
 
 ##### Add all current changes to the next commit:
@@ -280,6 +290,18 @@ $ git reflog delete
 ```
 <hr>
 
+## Move / Rename
+
+##### Rename a file:
+
+Rename Index.txt to Index.html
+
+```
+$ git mv Index.txt Index.html
+```
+
+<hr>
+
 ## Branches & Tags
 
 ##### List all local branches:
@@ -312,10 +334,18 @@ $ git checkout <branch> -- <filename>
 $ git checkout -b <branch>
 ```
 
+
+##### Create a new branch from an exiting branch and switch to new branch:
+```
+$ git checkout -b <new_branch> <existing_branch>
+```
+
+
 #### Checkout and create a new branch from existing commit
 ```
 $ git checkout <commit-hash> -b <new_branch_name>
 ```
+
 
 ##### Create a new branch based on your current HEAD:
 ```
@@ -344,15 +374,31 @@ $ git branch -m <new_branch_name>
 $ git branch -D <branch>
 ```
 
-##### Mark the current commit with a tag:
+##### Mark `HEAD` with a tag:
 ```
 $ git tag <tag-name>
 ```
 
-##### Mark the current commit with a tag that includes a message:
+##### Mark `HEAD` with a tag and open the editor to include a message:
 ```
 $ git tag -a <tag-name>
 ```
+
+##### Mark `HEAD` with a tag that includes a message:
+```
+$ git tag <tag-name> -am 'message here'
+```
+
+##### List all tags:
+```
+$ git tag
+```
+
+##### List all tags with their messages (tag message or commit message if tag has no message):
+```
+$ git tag -n
+```
+
 <hr>
 
 ## Update & Publish
@@ -371,6 +417,18 @@ $ git remote show <remote>
 ```
 $ git remote add <remote> <url>
 ```
+
+##### Rename a remote repository, from &lt;remote&gt; to &lt;new_remote&gt;:
+```
+$ git remote rename <remote> <new_remote>
+```
+
+##### Remove a remote:
+```
+$ git remote rm <remote>
+```
+
+<em><sub>Note: git remote rm does not delete the remote repository from the server. It simply removes the remote and its references from your local repository.</sub></em>
 
 ##### Download all changes from &lt;remote&gt;, but don't integrate into HEAD:
 ```
